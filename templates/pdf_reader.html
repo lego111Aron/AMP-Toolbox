@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}PDF Olvasó{% endblock %}
+
+{% block content %}
+    <div class="glass-panel" style="height: 80vh; display: flex; flex-direction: column;">
+        <h2 class="section-title">Egyszerű PDF Olvasó</h2>
+        
+        <form id="pdf-upload-form" action="{{ url_for('upload_pdf_viewer') }}" method="post" enctype="multipart/form-data" style="margin-bottom: 1rem;">
+            <input type="file" name="file" accept=".pdf" required onchange="this.form.submit()">
+        </form>
+
+        {% if pdf_url %}
+        <iframe src="{{ pdf_url }}" style="flex-grow: 1; width: 100%; border: none;"></iframe>
+        {% else %}
+        <p style="text-align: center; color: var(--text-secondary); margin-top: auto; margin-bottom: auto;">
+            Tölts fel egy PDF fájlt a megtekintéshez.
+        </p>
+        {% endif %}
+    </div>
+{% endblock %}

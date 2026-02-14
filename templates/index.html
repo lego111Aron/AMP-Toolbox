@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}Kezdőlap{% endblock %}
+
+{% block content %}
+    <div class="glass-panel">
+        <h2 class="section-title">Üdvözlünk az AMP Toolboxban!</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Válassz egy eszközt a munkához:</p>
+
+        <div class="card-grid">
+            <div class="tool-card">
+                <h3>PDF Eszközök</h3>
+                <p>PDF egyesítés, darabolás, és egyéb műveletek.</p>
+                <div style="margin-top: auto;">
+                    <a href="{{ url_for('pdf_tools') }}" class="btn">Megnyitás</a>
+                </div>
+            </div>
+            <div class="tool-card">
+                <h3>File Konverter</h3>
+                <p>Különböző formátumok közötti konvertálás (Kép, Docx, stb.).</p>
+                <div style="margin-top: auto;">
+                    <a href="{{ url_for('converter') }}" class="btn">Megnyitás</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

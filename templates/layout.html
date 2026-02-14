@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMP Toolbox - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='converter.css') }}">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+    <div class="background-glow"></div>
+
+    
+    <div class="page-container">
+        
+        <header class="glass-panel" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h1>AMP File & PDF Toolbox</h1>
+            <nav>
+                <a href="{{ url_for('index') }}" class="{{ 'active' if request.endpoint == 'index' else '' }}">Kezdőlap</a>
+                <a href="{{ url_for('pdf_tools') }}" class="{{ 'active' if request.endpoint == 'pdf_tools' else '' }}">PDF Eszközök</a>
+                <a href="{{ url_for('converter') }}" class="{{ 'active' if request.endpoint == 'converter' else '' }}">Konverter</a>
+            </nav>
+        </header>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        
+        <div class="content-wrapper">
+
