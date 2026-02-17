@@ -73,20 +73,21 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     background: rgba(15, 22, 27, 0.6);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--glass-border);
     border-radius: 0 0 var(--border-radius) var(--border-radius);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 header h1 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin: 0;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     color: #fff;
 }
+
 
 nav a {
     margin-left: 1.5rem;
@@ -110,51 +111,80 @@ nav a.active, nav a:hover {
     padding: 2.5rem;
     box-shadow: var(--shadow-strong);
     margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
-.section-title {
-    font-size: 2rem;
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    padding-bottom: 1rem;
+/* Page Title */
+.page-title {
+    font-size: 2.5rem;
     color: #fff;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Grid Layout */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
 }
 
 .tool-card {
-    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     padding: 2rem;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .tool-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255, 60, 0, 0.3);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transform: translateY(-8px);
+    border-color: rgba(255, 60, 0, 0.5);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.tool-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .tool-card h3 {
-    margin-top: 0;
+    margin: 0 0 0.75rem 0;
     color: #fff;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
 .tool-card p {
     color: var(--text-secondary);
     line-height: 1.5;
+    margin-bottom: 1.5rem;
     flex-grow: 1;
-    margin-bottom: 2rem;
+}
+
+.tool-card form {
+    width: 100%;
+}
+
+.tool-card input[type="file"] {
+    margin-bottom: 1rem;
+}
+
+.tool-card .btn {
+    width: 100%;
 }
 
 /* Forms */
@@ -162,7 +192,49 @@ nav a.active, nav a:hover {
     margin-bottom: 1.5rem;
 }
 
-input[type="file"], select {
+input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    outline: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="file"]:hover {
+    border-color: rgba(255, 60, 0, 0.3);
+    background: rgba(0,0,0,0.4);
+}
+
+input[type="file"]:focus {
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 10px rgba(255, 60, 0, 0.2);
+}
+
+input[type="file"]::file-selector-button {
+    background: rgba(255, 60, 0, 0.15);
+    border: 1px solid rgba(255, 60, 0, 0.4);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    margin-right: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: rgba(255, 60, 0, 0.3);
+    box-shadow: 0 0 15px rgba(255, 60, 0, 0.2);
+}
+
+select {
     display: block;
     width: 100%;
     padding: 0.8rem;
@@ -172,12 +244,19 @@ input[type="file"], select {
     color: #fff;
     font-size: 1rem;
     outline: none;
-    box-sizing: border-box; 
-    /* Important for padding not to overflow width */
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-input[type="file"]:focus, select:focus {
+select:hover {
+    border-color: rgba(255, 60, 0, 0.3);
+    background: rgba(0,0,0,0.4);
+}
+
+select:focus {
     border-color: var(--brand-primary);
+    box-shadow: 0 0 10px rgba(255, 60, 0, 0.2);
 }
 
 /* Buttons */
@@ -201,6 +280,16 @@ input[type="file"]:focus, select:focus {
     box-shadow: 0 0 20px rgba(255, 60, 0, 0.25);
     text-decoration: none;
     color: #fff;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+    background: rgba(255, 60, 0, 0.1);
+    box-shadow: none;
 }
 
 /* Alerts */
@@ -245,5 +334,15 @@ footer {
     
     .glass-panel {
         padding: 1.5rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 }

@@ -3,46 +3,48 @@
 {% block title %}PDF Eszközök{% endblock %}
 
 {% block content %}
-    <div class="glass-panel">
-        <h2 class="section-title">PDF Műveletek</h2>
-        
-        <div class="card-grid">
-            <!-- PDF Merge -->
-            <div class="tool-card">
-                <h3>PDF Egyesítés (Merge)</h3>
-                <p>Válassz ki több PDF fájlt az egyesítéshez.</p>
-                <form action="{{ url_for('upload_pdf_merge') }}" method="post" enctype="multipart/form-data">
-                    <input type="file" name="files" multiple accept=".pdf" required>
-                    <button type="submit" class="btn">Egyesítés</button>
-                </form>
-            </div>
+    <h2 class="page-title">PDF Eszközök</h2>
+    
+    <div class="card-grid">
+        <!-- PDF Merge -->
+        <div class="tool-card">
+            <div class="tool-icon">📄</div>
+            <h3>PDF Egyesítés</h3>
+            <p>Válassz ki több PDF fájlt az egyesítéshez.</p>
+            <form action="{{ url_for('upload_pdf_merge') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="files" multiple accept=".pdf" required>
+                <button type="submit" class="btn">Egyesítés</button>
+            </form>
+        </div>
 
-            <!-- PDF Split -->
-            <div class="tool-card">
-                <h3>PDF Szétválasztás (Split)</h3>
-                <p>Darabold fel a PDF-et külön oldalakra.</p>
-                <form action="{{ url_for('upload_pdf_split') }}" method="post" enctype="multipart/form-data">
-                    <input type="file" name="file" accept=".pdf" required>
-                    <button type="submit" class="btn">Szétválasztás</button>
-                </form>
-            </div>
+        <!-- PDF Split -->
+        <div class="tool-card">
+            <div class="tool-icon">✂️</div>
+            <h3>PDF Szétválasztás</h3>
+            <p>Darabold fel a PDF-et külön oldalakra.</p>
+            <form action="{{ url_for('upload_pdf_split') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".pdf" required>
+                <button type="submit" class="btn">Szétválasztás</button>
+            </form>
+        </div>
 
-            <!-- PDF Crop -->
-            <div class="tool-card">
-                <h3>PDF Kivágás (Crop)</h3>
-                <p>Vágd le a felesleges margókat.</p>
-                <form action="{{ url_for('upload_pdf_crop') }}" method="post" enctype="multipart/form-data">
-                    <input type="file" name="file" accept=".pdf" required>
-                    <button type="submit" class="btn">Kivágás</button>
-                </form>
-            </div>
+        <!-- PDF Crop -->
+        <div class="tool-card">
+            <div class="tool-icon">✂️</div>
+            <h3>PDF Kivágás</h3>
+            <p>Vágd le a felesleges margókat.</p>
+            <form action="{{ url_for('upload_pdf_crop') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".pdf" required>
+                <button type="submit" class="btn">Kivágás</button>
+            </form>
+        </div>
 
-            <!-- Simple PDF Viewer (Placeholder for now, implementation complex for static) -->
-            <div class="tool-card">
-                <h3>PDF Olvasó</h3>
-                <p>Egyszerű PDF megjelenítő.</p>
-                <a href="{{ url_for('pdf_reader') }}" class="btn">Olvasó Megnyitása</a>
-            </div>
+        <!-- PDF Viewer -->
+        <div class="tool-card">
+            <div class="tool-icon">👁️</div>
+            <h3>PDF Olvasó</h3>
+            <p>Egyszerű PDF megjelenítő böngésződben.</p>
+            <a href="{{ url_for('pdf_reader') }}" class="btn">Olvasó Megnyitása</a>
         </div>
     </div>
 {% endblock %}

@@ -1,34 +1,53 @@
 {% extends "layout.html" %}
 
 {% block title %}File Konverter{% endblock %}
-{% block body_class %}converter-theme{% endblock %}
 
 {% block content %}
-    <div class="glass-panel">
-        <h2 class="section-title">Univerzális Konverter</h2>
-        
-        <div class="card-grid">
-            <div class="tool-card">
-                <h3>File Konvertálás</h3>
-                <p>Töltsd fel a fájlt és válaszd ki a célformátumot.</p>
-                <form action="{{ url_for('upload_convert') }}" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <input type="file" name="file" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="format" style="color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">Cél formátum:</label>
-                        <select name="format" id="format">
-                            <option value="png">PNG (Képből)</option>
-                            <option value="jpg">JPG (Képből)</option>
-                            <option value="pdf">PDF (Docx/Képből)</option>
-                            <option value="docx">Docx (PDF-ből - hamarosan)</option>
-                        </select>
-                    </div>
-                    
-                    <button type="submit" class="btn">Konvertálás</button>
-                </form>
-            </div>
+    <h2 class="page-title">File Konverter</h2>
+    
+    <div class="card-grid">
+        <!-- Image to PNG -->
+        <div class="tool-card">
+            <div class="tool-icon">🖼️</div>
+            <h3>Kép → PNG</h3>
+            <p>Konvertálj képeket PNG formátumba.</p>
+            <form action="{{ url_for('upload_convert') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" required>
+                <input type="hidden" name="format" value="png">
+                <button type="submit" class="btn">Konvertálás</button>
+            </form>
+        </div>
+
+        <!-- Image to JPG -->
+        <div class="tool-card">
+            <div class="tool-icon">🖼️</div>
+            <h3>Kép → JPG</h3>
+            <p>Konvertálj képeket JPG formátumba.</p>
+            <form action="{{ url_for('upload_convert') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" required>
+                <input type="hidden" name="format" value="jpg">
+                <button type="submit" class="btn">Konvertálás</button>
+            </form>
+        </div>
+
+        <!-- Image to PDF -->
+        <div class="tool-card">
+            <div class="tool-icon">📄</div>
+            <h3>Kép → PDF</h3>
+            <p>Konvertálj képeket PDF dokumentummá.</p>
+            <form action="{{ url_for('upload_convert') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" required>
+                <input type="hidden" name="format" value="pdf">
+                <button type="submit" class="btn">Konvertálás</button>
+            </form>
+        </div>
+
+        <!-- Placeholder for future conversions -->
+        <div class="tool-card" style="opacity: 0.6; pointer-events: none;">
+            <div class="tool-icon">📝</div>
+            <h3>PDF → Docx</h3>
+            <p>Hamarosan elérhető...</p>
+            <button class="btn" disabled>Hamarosan</button>
         </div>
     </div>
 {% endblock %}
